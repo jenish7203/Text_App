@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
         <BrowserRouter>
-          <Navbar title="Jenish Movaliya"/>
+          <Navbar title="Jenish Movaliya - Patel"/>
 
           <Routes>
             <Route path='/' element={<Home heding="Enter The Text To Analyze Below"/>}/>
