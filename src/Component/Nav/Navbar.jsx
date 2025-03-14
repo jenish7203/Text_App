@@ -5,13 +5,15 @@ const Navbar = (props) => {
   return (
     <>
       <nav>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div class="container-fluid">
-            <Link class="navbar-brand" to="/">
+        <nav
+          className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+        >
+          <div className="container-fluid">
+            <Link className="navbar-brand" to="/">
               {props.title}
             </Link>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
@@ -19,34 +21,85 @@ const Navbar = (props) => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <NavLink to="/" className='nav-link'>Home</NavLink>
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <NavLink to="/" className="nav-link">
+                    Home
+                  </NavLink>
                 </li>
-                <li class="nav-item">
-                  <NavLink to="about" className='nav-link'>About Us</NavLink>
+                <li className="nav-item">
+                  <NavLink to="about" className="nav-link">
+                    About Us
+                  </NavLink>
                 </li>
-                <li class="nav-item">
-                  <NavLink to="services" className='nav-link'>Services</NavLink>
+                <li className="nav-item">
+                  <NavLink to="services" className="nav-link">
+                    Services
+                  </NavLink>
                 </li>
-                <li class="nav-item">
-                  <NavLink to="contactUs" className='nav-link'>Contact</NavLink>
+                <li className="nav-item">
+                  <NavLink to="contactUs" className="nav-link">
+                    Contact
+                  </NavLink>
                 </li>
               </ul>
-              <form class="d-flex">
+              <div className="d-flex">
+                <div
+                  className="bg-primary rounded mx-2"
+                  style={{ height: "30px", width: "30px", cursor: "pointer" }}
+                  onClick={() => {
+                    props.toggleMode("primary");
+                  }}
+                ></div>
+                <div
+                  className="bg-danger rounded mx-2"
+                  style={{ height: "30px", width: "30px", cursor: "pointer" }}
+                  onClick={() => {
+                    props.toggleMode("danger");
+                  }}
+                ></div>
+                <div
+                  className="bg-success rounded mx-2"
+                  style={{ height: "30px", width: "30px", cursor: "pointer" }}
+                  onClick={() => {
+                    props.toggleMode("success");
+                  }}
+                ></div>
+                <div
+                  className="bg-warning rounded mx-2"
+                  style={{ height: "30px", width: "30px", cursor: "pointer" }}
+                  onClick={() => {
+                    props.toggleMode("warning");
+                  }}
+                ></div>
+              </div>
+              <div
+                className={`form-check form-switch text-${
+                  props.mode === "light" ? "dark" : "light"
+                }`}
+              >
                 <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
+                  className="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="flexSwitchCheckDefault"
+                  onClick={() => {
+                    props.toggleMode(null);
+                  }}
                 />
-                <button class="btn btn-primary" type="submit">
-                  Search
-                </button>
-              </form>
+                <label
+                  className="form-check-label"
+                  htmlFor="flexSwitchCheckDefault"
+                >
+                  Toggle DarkMode
+                </label>
+              </div>
             </div>
           </div>
         </nav>
